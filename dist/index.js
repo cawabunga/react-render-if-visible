@@ -12,7 +12,7 @@ var RenderIfVisible = function (_a) {
     var placeholderHeight = React.useRef(defaultHeight);
     var intersectionRef = React.useRef(null);
     // Set visibility with intersection observer
-    React.useEffect(function () {
+    React.useLayoutEffect(function () {
         if (intersectionRef.current) {
             var observer_1 = new IntersectionObserver(function (entries) {
                 if (typeof window !== undefined && window.requestIdleCallback) {
@@ -32,7 +32,7 @@ var RenderIfVisible = function (_a) {
         return function () { };
     }, [intersectionRef]);
     // Set true height for placeholder element after render.
-    React.useEffect(function () {
+    React.useLayoutEffect(function () {
         if (intersectionRef.current && isVisible) {
             placeholderHeight.current = intersectionRef.current.offsetHeight;
         }

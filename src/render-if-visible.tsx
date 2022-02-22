@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useLayoutEffect } from 'react'
 
 const isServer = typeof window === 'undefined'
 
@@ -24,7 +24,7 @@ const RenderIfVisible = ({
   const intersectionRef = useRef<HTMLDivElement>(null)
 
   // Set visibility with intersection observer
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (intersectionRef.current) {
       const observer = new IntersectionObserver(
         entries => {
@@ -50,7 +50,7 @@ const RenderIfVisible = ({
   }, [intersectionRef])
 
   // Set true height for placeholder element after render.
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (intersectionRef.current && isVisible) {
       placeholderHeight.current = intersectionRef.current.offsetHeight
     }
