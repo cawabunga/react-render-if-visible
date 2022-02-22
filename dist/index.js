@@ -16,9 +16,7 @@ var RenderIfVisible = function (_a) {
         if (intersectionRef.current) {
             var observer_1 = new IntersectionObserver(function (entries) {
                 if (typeof window !== undefined && window.requestIdleCallback) {
-                    window.requestIdleCallback(function () { return setIsVisible(entries[0].isIntersecting); }, {
-                        timeout: 600
-                    });
+                    window.requestIdleCallback(function () { return setIsVisible(entries[0].isIntersecting); });
                 }
                 else {
                     setIsVisible(entries[0].isIntersecting);

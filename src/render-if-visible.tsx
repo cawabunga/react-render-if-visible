@@ -31,9 +31,7 @@ const RenderIfVisible = ({
           if (typeof window !== undefined && window.requestIdleCallback) {
             window.requestIdleCallback(
               () => setIsVisible(entries[0].isIntersecting),
-              {
-                timeout: 600
-              }
+              
             )
           } else {
             setIsVisible(entries[0].isIntersecting)
