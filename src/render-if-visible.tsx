@@ -8,14 +8,16 @@ type Props = {
   /** How far outside the viewport in pixels should elements be considered visible?  */
   visibleOffset?: number
   root?: HTMLElement | null
-  children: React.ReactNode
+  children: React.ReactNode,
+  placeholder?: React.ReactNode,
 }
 
 const RenderIfVisible = ({
   defaultHeight = 300,
   visibleOffset = 1000,
   root = null,
-  children
+  children,
+  placeholder
 }: Props) => {
   const [isVisible, setIsVisible] = useState<boolean>(isServer)
   const placeholderHeight = useRef<number>(defaultHeight)
@@ -61,7 +63,7 @@ const RenderIfVisible = ({
       {isVisible ? (
         <>{children}</>
       ) : (
-        <div style={{ height: placeholderHeight.current }} />
+        placeholder ? placeholder : <div style={{ height: placeholderHeight.current }} />
       )}
     </div>
   )
